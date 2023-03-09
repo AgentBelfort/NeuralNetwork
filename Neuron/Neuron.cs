@@ -22,6 +22,7 @@
                 float error = (float)Math.Pow(prediction - goal, 2); // ошибка
                 float delta = (prediction - goal); // считаем разницу (чистая ошибка)
                 FloatVector weightDeltas = delta * input;
+                weightDeltas[0] = 0; // заморозка веса
                 weights -= (weightDeltas * alpha); // корректируем
 
                 Console.WriteLine($"Prediction: {prediction}\tDelta: {delta}\tWeights: {weights}");
